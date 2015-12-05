@@ -19,9 +19,39 @@
  @import 'normalize';
  @import "font-awesome";
 
+ $principal: #32526E;
+ $secondary: #81B9C3;
+ $dark: #424652;
+ $white: #fff;
+ $highlight: #FF884D;
+ $light-gray: #ededed;
+ $green: #41C3AC;
+
  *{
      font-family: 'Raleway', sans-serif;
+     box-sizing: border-box;
  }
+
+ .wrapper{
+	width: 90%;
+	margin: 0px auto;
+}
+
+.skinny_wrapper{
+	width: 80%;
+	max-width: 760px;
+	margin: 0px auto;
+}
+
+.super_skinny_wrapper{
+	width: 60%;
+	max-width: 570px;
+	margin: 0px auto;
+}
+
+.wrapper_padding{
+	padding: 4rem 0;
+}
 
 .clearfix:before,
 .clearfix:after{
@@ -33,6 +63,83 @@
 	clear: both;
 }
 
+h1,h2,h3,h4,h5,h6,p{
+    color: $dark;
+}
+
+h1{
+	font-size: 2.5rem;
+}
+
+h2{
+	font-size: 2rem;
+}
+
+h3{
+	font-size: 1.75rem;
+}
+
+h4{
+	font-size: 1.375rem;
+}
+
+h5{
+	font-size: 1.25rem;
+}
+
+h6{
+	font-size: 1rem;
+}
+
+p,li{
+	font-size: 1.1rem;
+	line-height: 1.75;
+}
+
+p,ul,ol{
+	margin: 0 0 1.6em 0;
+}
+
+#main-navigation{
+    background-color: $light-gray;
+    padding: .80em 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 60px;
+    border-bottom: 1px solid $secondary;
+    //Border radius
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    .brand{
+        font-weight: 700;
+        font-size: 3rem;
+        margin: auto;
+        float: left;
+        color: $principal;
+        &:hover{
+            color: $secondary;
+        }
+    }
+    nav{
+        float: right;
+        padding-top: 1.4rem;
+        a{
+            color: $principal;
+            text-decoration: none;
+            margin: 0 1rem;
+			font-size: 1em;
+            &:hover{
+                color: $secondary;
+            }
+        }
+    }
+}
+
 
  @import "pages";
  @import "pins";
+ @import "users";
