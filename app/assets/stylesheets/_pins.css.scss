@@ -6,20 +6,23 @@ $highlight: #FF884D;
 $light-gray: #ededed;
 $green: #41C3AC;
 
+.index{
+    h4{
+        font-weight: 700;
+    }
+}
+
 .show{
     h3{
         font-weight: 500;
         font-size: 3rem;
     }
     .image_panel{
-        width: 95%;
+        width: 100%;
         height: auto;
     }
     p{
         padding: .3em 1em 0 1.5em;
         font-size: 1.6rem;
-    }
-    #description{
-        font-weight: 700;
     }
 }

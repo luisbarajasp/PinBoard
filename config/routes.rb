@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       end
     end
 
+    
+
   get 'pages/welcome'
 
   get 'pages/about'
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :pins
 
+  get '*path' => redirect('/')
   #root 'pages#welcome'
 
 end
