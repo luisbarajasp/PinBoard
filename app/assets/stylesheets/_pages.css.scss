@@ -1,3 +1,77 @@
-// Place all the styles related to the Pages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$principal: #32526E;
+$secondary: #81B9C3;
+$dark: #424652;
+$white: #fff;
+$highlight: #FF884D;
+$light-gray: #ededed;
+$green: #41C3AC;
+
+.welcome_page{
+    display: block;
+    position:absolute;
+    height:auto;
+    bottom:0;
+    top:60px;
+    left:0;
+    right:0;
+    // padding-top: 1px;
+    // margin-top: -6px;
+    // height:100vh;
+
+    // background: url(landscape.jpg) no-repeat center center fixed;
+    //  -webkit-background-size: cover;
+    //  -moz-background-size: cover;
+    //  -o-background-size: cover;
+    //  background-size: cover;
+
+    video#bgvid{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        min-width: 100%;
+        height: auto;
+        min-height: 100%;
+        z-index: -100;
+        background: transparent url(video-bg.jpg) no-repeat;
+        background-size: cover;
+    }
+
+    .content_welcome{
+        //Border radius
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+
+        background-color: $principal;
+        margin-top: 8rem;
+        padding: 3rem;
+        h3{
+            letter-spacing: .5px;
+            text-align: center;
+            color: $white;
+        }
+        h1{
+            font-family: 'Damion', cursive;
+            letter-spacing: 4px;
+            text-align: center;
+            color: $secondary;
+            font-size: 10rem;
+        }
+        .options{
+            p{
+                padding-top: .5em;
+                font-size: 1em;
+                color: $white;
+            }
+            a{
+                text-decoration: none;
+                font-weight: 700;
+                color: $white;
+                &:hover{
+                    color: $secondary;
+                }
+            }
+        }
+    }
+}

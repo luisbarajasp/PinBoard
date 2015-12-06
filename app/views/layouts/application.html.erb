@@ -6,11 +6,16 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Raleway:700,400,200' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
     <header id="main-navigation" class="clearfix">
-        <%= link_to  '<i class="fa fa-pinterest"></i>'.html_safe, root_path, class:"brand" %>
+        <% if user_signed_in? %>
+            <%= link_to  '<i class="fa fa-pinterest"></i>'.html_safe, authenticated_root_path, class:"brand" %>
+        <% else %>
+            <%= link_to  '<i class="fa fa-pinterest"></i>'.html_safe, unauthenticated_root_path, class:"brand" %>
+        <% end %>
         <nav>
             <% if user_signed_in? %>
 

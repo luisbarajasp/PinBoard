@@ -1,2 +1,19 @@
-<h1>Pages#welcome</h1>
-<p>Find me in app/views/pages/welcome.html.erb</p>
+<div class="welcome_page">
+
+    <video id="bgvid" autoplay loop poster="pinboard.png" class="fullscreen-bg__video">
+        <source src="pinboard.webm" type="video/webm">
+        <source src="pinboard.mp4" type="video/mp4">
+        <source src="pinboard.ogv" type="video/ogg">
+    </video>
+
+    <div class="super_skinny_wrapper">
+        <div class="content_welcome">
+            <h3>Welcome to</h3>
+            <h1>Pin Board</h1>
+            <div class="center options">
+                <%= link_to "Sign Up", new_user_registration_path, :class => "btn btn-primary" %>
+                <p>Have an account? <%= link_to "Log In", new_user_session_path %></p>
+            </div>
+        </div>
+    </div>
+</div>

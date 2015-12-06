@@ -101,6 +101,7 @@ p,ul,ol{
 }
 
 #main-navigation{
+    box-shadow: 1px 1px 5px #888888;
     background-color: $light-gray;
     padding: .80em 5%;
     position: fixed;
@@ -138,6 +139,38 @@ p,ul,ol{
         }
     }
 }
+
+.sign_up_form{
+    //Border radius
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+
+    color: $white;
+    margin-top: 6rem;
+    padding: 1rem;
+    background-color: $principal;
+    h2{
+        color: $white;
+        text-align: center;
+    }
+    .center{
+        text-align: center;
+        a{
+            text-decoration: none;
+            color: $white;
+            &:hover{
+                color: $secondary;
+            }
+        }
+    }
+}
+
+
+.center{
+    text-align: center;
+}
+
 
 
  @import "pages";

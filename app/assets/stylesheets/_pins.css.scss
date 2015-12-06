@@ -1,3 +1,25 @@
-// Place all the styles related to the Pins controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$principal: #32526E;
+$secondary: #81B9C3;
+$dark: #424652;
+$white: #fff;
+$highlight: #FF884D;
+$light-gray: #ededed;
+$green: #41C3AC;
+
+.show{
+    h3{
+        font-weight: 500;
+        font-size: 3rem;
+    }
+    .image_panel{
+        width: 95%;
+        height: auto;
+    }
+    p{
+        padding: .3em 1em 0 1.5em;
+        font-size: 1.6rem;
+    }
+    #description{
+        font-weight: 700;
+    }
+}
