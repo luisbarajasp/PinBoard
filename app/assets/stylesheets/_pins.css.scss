@@ -1,4 +1,5 @@
 $principal: #32526E;
+$pHover: #21394f;
 $secondary: #81B9C3;
 $dark: #424652;
 $white: #fff;
@@ -11,6 +12,7 @@ $red: #ff4c4c;
     .col3{
         padding: 0 .5em;
         .thumbnail{
+            position:relative;
             padding: 0;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
@@ -27,15 +29,6 @@ $red: #ff4c4c;
                     color: $red;
                     width: 15px;
                     text-decoration: none;
-                    .change-icon > .fa:nth-child(2) {
-                      display: none;
-                    }
-                    .change-icon:hover > .fa:nth-child(1) {
-                      display: none;
-                    }
-                    .change-icon:hover > .fa:nth-child(2) {
-                      display: inherit;
-                    }
                 }
                 border-bottom: 1px solid $light-gray;
             }
@@ -70,11 +63,101 @@ $red: #ff4c4c;
                 border-top-left-radius: 8px;
                 border-top-right-radius: 8px;
             }
+            .pin_hover,.pin_hover_left{
+                display: none;
+            }
+            &:hover{
+                .pin_hover_left{
+                    display: block;
+                    top: .2em;
+                    left: .3em;
+                    a{
+                        text-decoration: none;
+                        font-family: 'Damion', cursive;
+                        letter-spacing: 2px;
+                    }
+                    font-size: 2em;
+                    position: absolute;
+                }
+                .pin_hover{
+                    display: block;
+                    width: inherit;
+    			    height: inherit;
+                    top:0;
+        		    right:.3em;
+                    a{
+                        color: $red;
+                        text-decoration: none;
+                    }
+                    font-size: 2em;
+        		    position: absolute;
+                    .change-icon > .fa:nth-child(2) {
+                      display: none;
+                    }
+                    .change-icon:hover > .fa:nth-child(1) {
+                      display: none;
+                    }
+                    .change-icon:hover > .fa:nth-child(2) {
+                      display: inherit;
+                    }
+                }
+
+            }
         }
     }
 }
 
 .show{
+    .user_options{
+        width: auto;
+        height: 5rem;
+        text-align: left;
+        .pin_like{
+            display: inline-block;
+            text-align: right;
+            a{
+                color: $red;
+                text-decoration: none;
+            }
+            font-size: 2em;
+            .change-icon > .fa:nth-child(2) {
+              display: none;
+            }
+            .change-icon:hover > .fa:nth-child(1) {
+              display: none;
+            }
+            .change-icon:hover > .fa:nth-child(2) {
+              display: inherit;
+            }
+        }
+        .pin_it{
+            display: inline-block;
+            text-align: left;
+            margin-right: .3em;
+            a{
+                text-decoration: none;
+                font-family: 'Damion', cursive;
+            }
+            font-size: 2em;
+            .btn-pin-it{
+                padding-right: .2em;
+                color: $white;
+                background-color: $principal;
+                //Border radius
+                -moz-border-radius: 8px;
+                -webkit-border-radius: 8px;
+                border-radius: 8px;
+
+                border: 1px solid $light-gray;
+                &:hover{
+                    background-color: $pHover;
+                }
+            }
+        }
+    }
+    .admin_options{
+        letter-spacing: 5px;
+    }
     .panel-body{
         padding: 0;
     }

@@ -9,7 +9,7 @@ $red: #ff4c4c;
 
 .user_show{
     background-color: $light-gray;
-    height: 100%;
+
     .header{
         background-color: $white;
         margin-top: -10px;
@@ -35,5 +35,12 @@ $red: #ff4c4c;
             font-weight: 700;
             text-align: center;
         }
+    }
+    #pins{
+        margin-bottom: 3em;
+    }
+    .finish{
+        color: $gray;
+        font-size: 3rem;
     }
 }
