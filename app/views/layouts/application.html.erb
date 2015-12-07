@@ -19,8 +19,6 @@
         <nav>
             <% if user_signed_in? %>
                 <%= link_to image_tag(current_user.avatar.url(:mini), :class => "img-circle") + " #{current_user.name.split[0]}", current_user %>
-                <%= link_to "Edit Profile", edit_user_registration_path %>
-                <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
             <% else %>
                 <%= link_to "About", pages_about_path %>
                 <%= link_to "Contact", pages_contact_path %>

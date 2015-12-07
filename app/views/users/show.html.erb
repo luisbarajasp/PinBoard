@@ -1,2 +1,47 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="user_show">
+    <div class="header">
+        <% if @user == current_user %>
+            <%= link_to "Edit Profile", edit_user_registration_path, :class => "btn btn-primary edit" %> <br> <br>
+            <%= link_to "Log out", destroy_user_session_path, :method => :delete, :class => "btn btn-danger sign_out" %>
+        <% end %>
+        <%= image_tag @user.avatar.url(:thumb), :class => "img-circle" %>
+        <h1><%= @user.name %></h1>
+        <div class="category">
+
+        </div>
+    </div>
+    <div id="pins" class="transitions-enabled wrapper2 wrapper_padding index">
+            <% @pins.each do |pin| %>
+            <div class="box col3">
+              <div class="thumbnail">
+                   <%= link_to image_tag(pin.image.url(:medium)), pin %>
+                   <div class="caption">
+                        <div class="pin_title">
+                            <h4><%= pin.title %></h4>
+                            <% if current_user.likes %>
+                                <%= link_to '
+                                    <span class="change-icon">
+                                    <i class="fa fa-heart"></i>
+                                    <i class="fa fa-heart-o"></i>
+                                    </span>
+                                '.html_safe, pin_like_path(pin.id), :class => "like" %>
+                            <% else %>
+                                <%= link_to '
+                                    <span class="change-icon">
+                                    <i class="fa fa-heart"></i>
+                                    <i class="fa fa-heart-o"></i>
+                                    </span>
+                                '.html_safe, pin_dislike_path(pin.id), :class => "like" %>
+                            <% end %>
+                        </div>
+                        <% if pin.description? %>
+                            <div class="pin_desc">
+                                <p><%= pin.description %></p>
+                            </div>
+                        <% end %>
+                   </div>
+                </div>
+            </div>
+            <% end %>
+    </div>
+</div>

@@ -4,6 +4,7 @@ $dark: #424652;
 $white: #fff;
 $highlight: #FF884D;
 $light-gray: #ededed;
+$gray: #939393;
 $red: #ff4c4c;
 
 .index{
@@ -85,9 +86,32 @@ $red: #ff4c4c;
         width: 100%;
         height: auto;
     }
-    p{
-        padding: .3em 1em 0 1.5em;
+    .pin_display{
+        padding: 1.5em 0;
         font-size: 1.6rem;
+        .description{
+            text-align: left;
+        }
+        .time{
+            text-align: right;
+            color: $gray;
+        }
+    }
+    .pin_user{
+        padding: 1.5em 0;
+        a{
+            text-decoration: none;
+            color: $dark;
+            font-weight: 700;
+            padding: 0 1em;
+            &:hover{
+                color: $secondary;
+            }
+            img{
+                width: 45px;
+                height: 45px;
+            }
+        }
     }
 }
 
