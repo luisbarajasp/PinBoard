@@ -7,12 +7,35 @@ $light-gray: #ededed;
 $green: #41C3AC;
 
 .index{
-    h4{
-        font-weight: 700;
+    .col3{
+        padding: 0 .5em;
+        .thumbnail{
+            padding: 0;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            .caption{
+                .pin_title{
+                    font-weight: 700;
+                    border-bottom: .5px solid $dark;
+                }
+            }
+            a{
+                display: block;
+                max-height: 785px;
+                overflow: hidden;
+            }
+            img{
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+            }
+        }
     }
 }
 
 .show{
+    .panel-body{
+        padding: 0;
+    }
     h3{
         font-weight: 500;
         font-size: 3rem;
@@ -25,4 +48,11 @@ $green: #41C3AC;
         padding: .3em 1em 0 1.5em;
         font-size: 1.6rem;
     }
+}
+
+.img-centered{
+    display: block;
+    max-height: 500px;
+    overflow: hidden;
+    text-align: center;
 }

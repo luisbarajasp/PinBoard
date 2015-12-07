@@ -48,11 +48,11 @@ class PinsController < ApplicationController
     private
 
 		def pin_params
-			params.require(:pin).permit( :image, :title, :description)
+			params.require(:pin).permit(:image, :title, :description, :slug)
 		end
 
         def find_pin
-			@pin = Pin.find(params[:id])
+			@pin = Pin.friendly.find(params[:id])
 		end
 
 		def check_user

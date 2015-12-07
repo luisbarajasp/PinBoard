@@ -18,7 +18,7 @@
         <% end %>
         <nav>
             <% if user_signed_in? %>
-                <%= link_to image_tag(current_user.avatar.url(:mini)) + " #{current_user.name}", current_user %>
+                <%= link_to image_tag(current_user.avatar.url(:mini), :class => "img-circle") + " #{current_user.name}", current_user %>
                 <%= link_to "Edit Profile", edit_user_registration_path %>
                 <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
             <% else %>
@@ -32,6 +32,10 @@
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
+
+    <% if user_signed_in? %>
+        <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_pin_path, :class => "pin" %>
+    <% end %>
 
 </body>
 </html>

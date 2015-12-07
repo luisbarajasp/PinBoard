@@ -3,7 +3,7 @@
 
         <h2><%= pluralize(@pin.errors.count, "error") %> prevented from saving the pin:</h2>
         <ul>
-            <% @post.errors.full_messages.each do |msg| %>
+            <% @pin.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
             <% end %>
         </ul>
