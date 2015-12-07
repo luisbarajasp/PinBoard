@@ -18,6 +18,16 @@
                    <div class="caption">
                         <div class="pin_title">
                             <h4><%= pin.title %></h4>
+                        </div>
+                        <% if pin.description? %>
+                            <div class="pin_desc">
+                                <p><%= pin.description %></p>
+                            </div>
+                        <% end %>
+                        <div class="pin_user">
+                            <%= link_to image_tag(pin.user.avatar.url(:mini), :class => "img-rounded") + " #{pin.user.name}", pin.user %>
+                        </div>
+                        <div class="pin_hover">
                             <% if current_user.likes %>
                                 <%= link_to '
                                     <span class="change-icon">
@@ -34,11 +44,9 @@
                                 '.html_safe, pin_dislike_path(pin.id), :class => "like" %>
                             <% end %>
                         </div>
-                        <% if pin.description? %>
-                            <div class="pin_desc">
-                                <p><%= pin.description %></p>
-                            </div>
-                        <% end %>
+                        <div class="pin_hover_left">
+                            <a class="btn btn-primary" href="#">Pin It</a>
+                        </div>
                    </div>
                 </div>
             </div>
