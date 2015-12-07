@@ -4,7 +4,7 @@ $dark: #424652;
 $white: #fff;
 $highlight: #FF884D;
 $light-gray: #ededed;
-$green: #41C3AC;
+$red: #ff4c4c;
 
 .index{
     .col3{
@@ -14,9 +14,36 @@ $green: #41C3AC;
             border-top-left-radius: 8px;
             border-top-right-radius: 8px;
             .caption{
-                .pin_title{
+                padding: 0;
+            }
+            .pin_title{
+                padding: 9px;
+                h4{
                     font-weight: 700;
-                    border-bottom: .5px solid $dark;
+                    font-size: 1em;
+                }
+                border-bottom: 1px solid $light-gray;
+            }
+            .pin_desc{
+                padding: 9px;
+                p{
+                    font-size: 1em;
+                    margin: 0;
+                }
+                border-bottom: 1px solid $light-gray;
+            }
+            .pin_user{
+                padding: 9px;
+                img{
+                    float:left;
+                }
+                a{
+                    padding-left: 2px;
+                    color: $dark;
+                    text-decoration: none;
+                }
+                &:hover{
+                    background-color: $light-gray;
                 }
             }
             a{
