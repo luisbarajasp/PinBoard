@@ -10,4 +10,6 @@ class Pin < ActiveRecord::Base
 
     validates :title, :image, presence: true
 
+    acts_as_likeable
+
 end

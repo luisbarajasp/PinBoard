@@ -20,6 +20,7 @@ gem 'friendly_id', '~> 5.1'
 gem 'will_paginate', '~> 3.0', '>= 3.0.7'
 gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
+gem 'socialization', '~> 1.2'
 
 
 group :development, :test do

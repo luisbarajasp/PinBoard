@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'socializations/like'
+
+  get 'socializations/unlike'
+
   devise_for :users
 
   resources :users, :only => [:show,:index]
@@ -21,7 +25,10 @@ Rails.application.routes.draw do
 
   get 'pages/contact'
 
-  resources :pins 
+  resources :pins do
+      post 'like',   to: 'socializations#like'
+      post 'dislike', to: 'socializations#dislike'
+  end
 
   get '*path' => redirect('/')
   #root 'pages#welcome'

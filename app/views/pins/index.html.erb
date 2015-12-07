@@ -6,6 +6,21 @@
                <div class="caption">
                     <div class="pin_title">
                         <h4><%= pin.title %></h4>
+                        <% if current_user.likes %>
+                            <%= link_to '
+                                <span class="change-icon">
+                                <i class="fa fa-heart"></i>
+                                <i class="fa fa-heart-o"></i>
+                                </span>
+                            '.html_safe, pin_like_path(pin.id), :class => "like" %>
+                        <% else %>
+                            <%= link_to '
+                                <span class="change-icon">
+                                <i class="fa fa-heart"></i>
+                                <i class="fa fa-heart-o"></i>
+                                </span>
+                            '.html_safe, pin_dislike_path(pin.id), :class => "like" %>
+                        <% end %>
                     </div>
                     <% if pin.description? %>
                         <div class="pin_desc">

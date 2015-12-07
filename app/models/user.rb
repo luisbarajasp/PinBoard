@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  acts_as_liker
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -11,4 +13,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :pins, dependent: :destroy
+
+  def likes
+      self.likes?(Pin.find(id))
+  end
+
 end
