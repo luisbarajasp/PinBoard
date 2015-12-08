@@ -37,6 +37,17 @@ $green: #41C3AC;
         background-size: cover;
     }
 
+    .logo{
+        z-index: 2;
+        font-size: 6rem;
+        color: $secondary;
+        .fa{
+            position: absolute;
+            top: 5.8rem;
+            left: 48%;
+        }
+    }
+
     .content_welcome{
         //Border radius
         -moz-border-radius: 6px;
