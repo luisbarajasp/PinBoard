@@ -16,7 +16,7 @@
                         <%= link_to image_tag(pin.user.avatar.url(:mini), :class => "img-rounded") + " #{pin.user.name}", pin.user %>
                     </div>
                     <div class="pin_hover">
-                        <% if current_user.likes %>
+                        <!-- <% if current_user.likes %>
                             <%= link_to '
                                 <span class="change-icon">
                                 <i class="fa fa-heart"></i>
@@ -30,7 +30,7 @@
                                 <i class="fa fa-heart-o"></i>
                                 </span>
                             '.html_safe, pin_dislike_path(pin.id), :class => "like" %>
-                        <% end %>
+                        <% end %> -->
                     </div>
                     <div class="pin_hover_left">
                         <a class="btn btn-primary" href="#">Pin It</a>
