@@ -26,8 +26,10 @@ Rails.application.routes.draw do
   get 'pages/contact'
 
   resources :pins do
-      post 'like',   to: 'socializations#like'
-      post 'dislike', to: 'socializations#dislike'
+     member do
+        put "like", to: "pins#like"
+        put "dislike", to: "pins#unlike"
+    end
   end
 
   get '*path' => redirect('/')

@@ -25,10 +25,8 @@ $red: #ff4c4c;
                     font-weight: 700;
                     font-size: 1em;
                 }
-                .like{
-                    color: $red;
-                    width: 15px;
-                    text-decoration: none;
+                .likes{
+                    color: $gray;
                 }
                 border-bottom: 1px solid $light-gray;
             }
@@ -83,7 +81,7 @@ $red: #ff4c4c;
                     display: block;
                     width: inherit;
     			    height: inherit;
-                    top:0;
+                    top:.2em;
         		    right:.3em;
                     a{
                         color: $red;
@@ -94,11 +92,13 @@ $red: #ff4c4c;
                     .change-icon > .fa:nth-child(2) {
                       display: none;
                     }
-                    .change-icon:hover > .fa:nth-child(1) {
-                      display: none;
-                    }
-                    .change-icon:hover > .fa:nth-child(2) {
-                      display: inherit;
+                    &:hover{
+                        .change-icon > .fa:nth-child(1) {
+                          display: none;
+                        }
+                        .change-icon > .fa:nth-child(2) {
+                          display: inherit;
+                        }
                     }
                 }
 

@@ -1,5 +1,5 @@
 class PinsController < ApplicationController
-    before_action :find_pin, only: [:show, :edit, :update, :destroy]
+    before_action :find_pin, only: [:show, :edit, :update, :destroy,:like,:unlike]
 	before_action :authenticate_user!, except: [:index, :show]
 
 	before_filter :check_user, only: [:edit, :update, :destroy]
@@ -44,6 +44,19 @@ class PinsController < ApplicationController
 		@pin.destroy
 		redirect_to pins_path
 	end
+
+    def like
+        @pin.liked_by current_user
+
+        redirect_to :back
+
+    end
+
+    def unlike
+        @pin.unliked_by current_user
+
+        redirect_to :back
+    end
 
     private
 

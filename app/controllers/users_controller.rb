@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
       @users = User.all
   end
@@ -11,6 +12,11 @@ class UsersController < ApplicationController
         format.html # show.html.erb
         format.xml { render :xml => @user }
     end
+  end
+
+  def likes
+      @user = User.friendly.find(params[:id])
+      @pins = @user.pins.liked
   end
 
 end

@@ -27,25 +27,29 @@
                         <div class="pin_user">
                             <%= link_to image_tag(pin.user.avatar.url(:mini), :class => "img-rounded") + " #{pin.user.name}", pin.user %>
                         </div>
-                        <!-- <div class="pin_hover">
-                            <% if current_user.likes %>
-                                <%= link_to '
-                                    <span class="change-icon">
-                                    <i class="fa fa-heart"></i>
-                                    <i class="fa fa-heart-o"></i>
-                                    </span>
-                                '.html_safe, pin_like_path(pin.id), :class => "like" %>
+                        <div class="pin_hover">
+                            <% if !(current_user.liked? pin) %>
+                                <div class="like">
+                                    <%= link_to like_pin_path(pin), method: :put, class: "btn btn-default" do %>
+                                        <span class="change-icon">
+                                        <i class="fa fa-heart-o"></i>
+                                        <i class="fa fa-heart"></i>
+                                        </span>
+                                    <% end %>
+                                </div>
                             <% else %>
-                                <%= link_to '
-                                    <span class="change-icon">
-                                    <i class="fa fa-heart"></i>
-                                    <i class="fa fa-heart-o"></i>
-                                    </span>
-                                '.html_safe, pin_dislike_path(pin.id), :class => "like" %>
+                                <div class="like">
+                                    <%= link_to dislike_pin_path(pin), method: :put, class: "btn btn-default" do%>
+                                        <span class="change-icon">
+                                        <i class="fa fa-heart"></i>
+                                        <i class="fa fa-heart-o"></i>
+                                        </span>
+                                    <% end %>
+                                </div>
                             <% end %>
-                        </div> -->
+                        </div>
                         <div class="pin_hover_left">
-                            <a class="btn btn-primary" href="#">Pin It</a>
+                            <a class="btn btn-default" href="#">Pin It</a>
                         </div>
                    </div>
                 </div>

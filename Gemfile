@@ -21,6 +21,7 @@ gem 'will_paginate', '~> 3.0', '>= 3.0.7'
 gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
 gem 'socialization', '~> 1.2'
+gem 'acts_as_votable', '~> 0.10.0'
 
 
 group :development, :test do

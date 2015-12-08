@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
 
   has_many :pins, dependent: :destroy
 
-  def likes
-      self.likes?(Pin.find(id))
-  end
+  acts_as_voter
 
 end
