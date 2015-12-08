@@ -75,3 +75,27 @@ $green: #41C3AC;
         }
     }
 }
+
+.page_title{
+    text-align: center;
+    font-family: 'Damion', cursive;
+    h1{
+        font-size: 6rem;
+    }
+}
+
+p.content{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.links{
+    text-align: center;
+    font-size: 3rem;
+    a{
+        color: $principal;
+        &:hover{
+            color: $highlight;
+        }
+    }
+}
