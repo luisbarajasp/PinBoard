@@ -45,7 +45,7 @@
                   <%= @pin.description %>
               </div>
               <div class="time col-md-4">
-                  <%= time_ago_in_words(@pin.created_at)%>
+                  <%= time_ago_in_words(@pin.created_at)%> ago
               </div>
           </div>
           <% if @pin.user != current_user %>

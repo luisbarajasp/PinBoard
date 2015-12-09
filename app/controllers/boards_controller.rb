@@ -13,12 +13,13 @@ class BoardsController < ApplicationController
 
     def new
         user = User.friendly.find(params[:user_id])
-        @board = user.boards.build
+        @board = Board.new
+        @board.user.build
     end
 
     def create
         user = User.friendly.find(params[:user_id])
-        @board = user.boards.create(params[:board_params])
+        @board = Board.new board_params
         @board.user_id = current_user.id
 
         if @board.save
