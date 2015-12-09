@@ -7,7 +7,7 @@
         <%= image_tag @user.avatar.url(:thumb), :class => "img-circle" %>
         <h1><%= @user.name %></h1>
         <div class="category">
-            <ul>
+            <ul id="categories">
                 <li>
                     <%= link_to user_boards_path(@user) do%>
                         <span class="number">

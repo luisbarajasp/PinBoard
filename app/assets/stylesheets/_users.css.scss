@@ -13,7 +13,7 @@ $red: #ff4c4c;
     .header{
         background-color: $white;
         margin-top: -10px;
-        padding: 2em 0;
+        padding: 2em 0 0 0;
         z-index: 2;
         box-shadow: 1px 1px 5px #888888;
         a.sign_out{
@@ -34,6 +34,40 @@ $red: #ff4c4c;
             font-size: 3rem;
             font-weight: 700;
             text-align: center;
+        }
+        .category{
+            text-align: center;
+            border-top: 1px solid $light-gray;
+            a{
+                color: $gray;
+                &:hover{
+                    color: $principal;
+                }
+            }
+            #categories {
+                padding: 1.5em;
+                height: 100%;
+                li{
+                    position: relative;
+                    padding: 2em 4.5em 1.5em 7.5em;
+                    display: inline;
+                    .number{
+                        font-size: 1.5em;
+                        font-weight: 700;
+                        position: absolute;
+                        width: 50%;
+                        left: 25%;
+                        top: 0;
+                    }
+                    .type{
+                        position: absolute;
+                        bottom: 10%;
+                        left: auto;
+                        width: 50%;
+                        left: 25%;
+                    }
+                }
+            }
         }
     }
     #pins{

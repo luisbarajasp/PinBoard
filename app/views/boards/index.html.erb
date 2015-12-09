@@ -1,4 +1,4 @@
-<div class="user_show">
+<div class="boards_index">
     <div class="header">
         <% if @user == current_user %>
             <%= link_to "Edit Profile", edit_user_registration_path, :class => "btn btn-primary edit" %> <br> <br>
@@ -7,7 +7,7 @@
         <%= image_tag @user.avatar.url(:thumb), :class => "img-circle" %>
         <h1><%= @user.name %></h1>
         <div class="category">
-            <ul>
+            <ul id="categories">
                 <li>
                     <%= link_to user_boards_path(@user) do%>
                         <span class="number">
@@ -61,13 +61,15 @@
             </ul>
         </div>
     </div>
-    <div id="pins" class="transitions-enabled wrapper2 wrapper_padding index">
+    <div id="boards" class="transitions-enabled wrapper2 wrapper_padding index">
             <% @boards.each do |board| %>
             <div class="box col3">
-              <div class="thumbnail">
-                        <h4><%= board.name %></h4>
+                  <div class="thumbnail caption-top">
+                      <img src="pinterest-pin.png" alt="">
+                      <div id="grad" class="caption board-title">
+                          <h4><%= board.name %></h4>
+                      </div>
                    </div>
-                </div>
             </div>
             <% end %>
     </div>
