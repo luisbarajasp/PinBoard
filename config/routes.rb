@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'socializations/like'
-
-  get 'socializations/unlike'
+  get 'likes/index'
 
   devise_for :users
 
-  resources :users, :only => [:show,:index]
+  resources :users, :only => [:show,:index,:likes] do
+      resources :boards
+      resources :likes , only: [:index]
+  end
 
     devise_scope :user do
       get "sign_out", :to => 'devise/sessions#destroy'

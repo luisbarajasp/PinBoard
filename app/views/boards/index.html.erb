@@ -19,7 +19,7 @@
                     <% end %>
                 </li>
                 <li>
-                    <%= link_to user_path do%>
+                    <%= link_to user_path(@user) do%>
                         <span class="number">
                             <%= @user.pins.count %>
                         </span>
@@ -62,46 +62,10 @@
         </div>
     </div>
     <div id="pins" class="transitions-enabled wrapper2 wrapper_padding index">
-            <% @pins.each do |pin| %>
+            <% @boards.each do |board| %>
             <div class="box col3">
               <div class="thumbnail">
-                   <%= link_to image_tag(pin.image.url(:medium)), pin %>
-                   <div class="caption">
-                        <div class="pin_title">
-                            <h4><%= pin.title %></h4>
-                        </div>
-                        <% if pin.description? %>
-                            <div class="pin_desc">
-                                <p><%= pin.description %></p>
-                            </div>
-                        <% end %>
-                        <div class="pin_user">
-                            <%= link_to image_tag(pin.user.avatar.url(:mini), :class => "img-rounded") + " #{pin.user.name}", pin.user %>
-                        </div>
-                        <div class="pin_hover">
-                            <% if !(current_user.liked? pin) %>
-                                <div class="like">
-                                    <%= link_to like_pin_path(pin), method: :put, class: "btn btn-default" do %>
-                                        <span class="change-icon">
-                                        <i class="fa fa-heart-o"></i>
-                                        <i class="fa fa-heart"></i>
-                                        </span>
-                                    <% end %>
-                                </div>
-                            <% else %>
-                                <div class="like">
-                                    <%= link_to dislike_pin_path(pin), method: :put, class: "btn btn-default" do%>
-                                        <span class="change-icon">
-                                        <i class="fa fa-heart"></i>
-                                        <i class="fa fa-heart-o"></i>
-                                        </span>
-                                    <% end %>
-                                </div>
-                            <% end %>
-                        </div>
-                        <div class="pin_hover_left">
-                            <a class="btn btn-default" href="#">Pin It</a>
-                        </div>
+                        <h4><%= board.name %></h4>
                    </div>
                 </div>
             </div>

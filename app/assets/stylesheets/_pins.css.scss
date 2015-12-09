@@ -89,10 +89,20 @@ $red: #ff4c4c;
                     }
                     font-size: 2em;
         		    position: absolute;
+                    .text{
+                        text-transform: uppercase;
+                        font-size: 1em;
+                        display: none;
+                        background-color: $white;
+                        color: $dark;
+                    }
                     .change-icon > .fa:nth-child(2) {
                       display: none;
                     }
                     &:hover{
+                        .text{
+                            display: block;
+                        }
                         .change-icon > .fa:nth-child(1) {
                           display: none;
                         }

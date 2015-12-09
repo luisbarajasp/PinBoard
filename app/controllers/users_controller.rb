@@ -14,9 +14,4 @@ class UsersController < ApplicationController
     end
   end
 
-  def likes
-      @user = User.friendly.find(params[:id])
-      @pins = @user.pins.liked
-  end
-
 end

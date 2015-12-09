@@ -173,6 +173,25 @@ p,ul,ol{
     }
 }
 
+.board{
+    font-size: 20px;
+    text-align: center;
+    padding-top: 4px;
+    display: block;
+    width: 35px;
+    height: 35px;
+    border-radius: 35px;
+    background-color: $principal;
+    color: $light-gray;
+    position:fixed;
+    bottom: 70px;
+    right: 20px;
+    &:hover{
+        color: $light-gray;
+        background-color: $secondary;
+    }
+}
+
 .sign_up_form{
     //Border radius
     -moz-border-radius: 6px;
@@ -208,3 +227,4 @@ p,ul,ol{
  @import "pages";
  @import "pins";
  @import "users";
+ @import "boards";

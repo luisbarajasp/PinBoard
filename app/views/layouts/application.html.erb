@@ -37,6 +37,7 @@
 
     <% if user_signed_in? %>
         <%= link_to '<i class="fa fa-plus"></i>'.html_safe, new_pin_path, :class => "pin" %>
+        <%= link_to '<i class="fa fa-laptop"></i>'.html_safe, new_user_board_path(current_user), :class => "board" %>
     <% end %>
 
 </body>
