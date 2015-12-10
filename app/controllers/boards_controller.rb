@@ -13,6 +13,7 @@ class BoardsController < ApplicationController
         @user = User.friendly.find(params[:user_id])
         @board = Board.new
         @user.boards.build
+        session[:return_to] ||= request.referer
     end
 
     def create
@@ -21,7 +22,7 @@ class BoardsController < ApplicationController
         @board.user_id = current_user.id
 
         if @board.save
-            redirect_to :back, notice: "Board saved succesfully."
+            redirect_to session.delete(:return_to), notice: "Board saved succesfully."
         else
             render 'new', notice: "Error: try again."
         end

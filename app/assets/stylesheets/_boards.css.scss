@@ -110,8 +110,12 @@ $red: #ff4c4c;
 		}
 
     }
-    .finish{
-        color: $gray;
-        font-size: 3rem;
-    }
+}
+
+.finish-wo{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: $gray;
+    font-size: 3rem;
 }

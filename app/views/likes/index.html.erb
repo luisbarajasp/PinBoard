@@ -61,6 +61,7 @@
             </ul>
         </div>
     </div>
+    <% if @user.find_liked_items.count > 0 %>
     <div id="pins" class="transitions-enabled wrapper2 wrapper_padding index">
             <% @pins.each do |pin| %>
             <div class="box col3">
@@ -113,5 +114,20 @@
             <i class="fa fa-pinterest"></i>
         </div>
     </div>
-
+    <% elsif @user == current_user %>
+        <div class="havent-liked">
+            <i class="fa fa-heart-o"></i>
+        </div>
+        <div class="finish-wo clearfix">
+            <div class="center">
+                <i class="fa fa-pinterest"></i>
+            </div>
+        </div>
+    <% else %>
+        <div class="finish-wo clearfix">
+            <div class="center">
+                <i class="fa fa-pinterest"></i>
+            </div>
+        </div>
+    <% end %>
 </div>

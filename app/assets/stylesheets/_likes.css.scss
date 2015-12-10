@@ -1,3 +1,19 @@
-// Place all the styles related to the Likes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$principal: #32526E;
+$secondary: #81B9C3;
+$dark: #424652;
+$white: #fff;
+$highlight: #FF884D;
+$light-gray: #ededed;
+$gray: #939393;
+$red: #ff4c4c;
+
+.havent-liked{
+    font-size: 3em;
+    text-align: center;
+    i{
+        color: $red;
+    }
+    position: absolute;
+    bottom: 30%;
+    left: 49%;
+}

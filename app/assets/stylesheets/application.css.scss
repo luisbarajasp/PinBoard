@@ -223,6 +223,11 @@ p,ul,ol{
     text-align: center;
 }
 
+.finish{
+    color: $gray;
+    font-size: 3rem;
+}
+
 
  @import "pages";
  @import "pins";

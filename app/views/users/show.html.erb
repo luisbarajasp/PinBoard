@@ -61,6 +61,7 @@
             </ul>
         </div>
     </div>
+    <% if @user.pins.count > 0 %>
     <div id="pins" class="transitions-enabled wrapper2 wrapper_padding index">
             <% @pins.each do |pin| %>
             <div class="box col3">
@@ -113,5 +114,14 @@
             <i class="fa fa-pinterest"></i>
         </div>
     </div>
+    <% else %>
+
+    <div class="finish-wo clearfix">
+        <div class="center">
+            <i class="fa fa-pinterest"></i>
+        </div>
+    </div>
+
+    <% end %>
 
 </div>
