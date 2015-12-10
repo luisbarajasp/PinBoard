@@ -4,7 +4,7 @@ $dark: #424652;
 $white: #fff;
 $highlight: #FF884D;
 $light-gray: #ededed;
-$gray: #939393;
+$gray: #bdbdbd;
 $red: #ff4c4c;
 
 .boards_index{
@@ -80,6 +80,8 @@ $red: #ff4c4c;
     		position:relative;
             width: 216px;
             height: 250px;
+            overflow: hidden;
+
             .board-title{
     			h4{
     				text-align: center;
@@ -109,6 +111,58 @@ $red: #ff4c4c;
             }
 		}
 
+    }
+}
+
+.board_show{
+    .header{
+        background-color: $white;
+        z-index: 2;
+        box-shadow: 0 4px 2px -2px #888888;
+        .board_params{
+            padding: 1em 0;
+            h1{
+                font-weight: 700;
+                font-size: 4rem;
+            }
+            h4{
+                font-size: 2rem;
+            }
+            border-bottom: 1px solid $light-gray;
+        }
+        .board_attr{
+            padding: 1em 0 3.5em 0;
+            .user{
+                text-align: left;
+                img{
+                    margin-right: .3em;
+                }
+                a{
+                    color: $dark;
+                    font-weight: 600;
+                    text-decoration: none;
+                }
+            }
+            .pins{
+                text-align: center;
+                p{
+                    color: $gray;
+                    font-size: 1em;
+                    font-weight: 700;
+                    span{
+                        font-size: .8em;
+                        font-weight: 400;
+                    }
+                }
+            }
+            .send{
+                text-align: right;
+            }
+        }
+    }
+    background-color: $light-gray;
+    .finish{
+        padding: 1em;
     }
 }
 

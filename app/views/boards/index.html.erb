@@ -66,10 +66,16 @@
             <% @boards.each do |board| %>
             <div class="box col3">
               <div class="thumbnail caption-top">
-                  <%= image_tag ("pinterest-pin.png") %>
-                  <div id="grad" class="caption board-title">
-                      <h4><%= board.name %></h4>
-                  </div>
+                  <% if board.its.count > 0 %>
+                      <%= image_tag board.its.first.pin.image.url %>
+                  <% else %>
+                      <%= image_tag ("pinterest-pin.png") %>
+                  <% end %>
+                  <%= link_to user_board_path(@user,board) do %>
+                      <div id="grad" class="caption board-title">
+                          <h4><%= board.name %></h4>
+                      </div>
+                  <% end %>
                </div>
             </div>
             <% end %>

@@ -1,0 +1,80 @@
+<div class="board_show">
+    <div class="header">
+        <div class="board_params center wrapper ">
+            <h1><%= @board.name %></h1>
+            <% if @board.description? %>
+                <h4><%= @board.description %></h4>
+            <% end %>
+        </div>
+        <div class="board_attr wrapper">
+            <nav class="col-md-4 user">
+                <%= link_to image_tag(@user.avatar.url(:mini), :class => "img-circle") + " #{@user.name.split[0]}", @user %>
+            </nav>
+            <nav class="col-md-4 pins">
+                <p>
+                    <%= @board.its.count %> <br>
+                    <span>
+                        Pins
+                    </span>
+                </p>
+            </nav>
+            <nav class="col-md-4 send">
+                <a class="btn btn-default" href="#"><i class="fa fa-paper-plane"></i></a>
+            </nav>
+        </div>
+    </div>
+    <div id="pins" class="transitions-enabled wrapper2 wrapper_padding index">
+            <% @board.its.each do |it| %>
+            <div class="box col3">
+              <div class="thumbnail">
+                   <%= link_to image_tag(it.pin.image.url(:medium)), it.pin %>
+                   <div class="caption">
+                        <div class="pin_title">
+                            <h4><%= it.pin.title %></h4>
+                            <div class="likes">
+                                <i class="fa fa-heart"></i> <%= it.pin.get_likes.size %>
+                            </div>
+                        </div>
+                        <% if it.pin.description? %>
+                            <div class="pin_desc">
+                                <p><%= it.pin.description %></p>
+                            </div>
+                        <% end %>
+                        <div class="pin_user">
+                            <%= link_to image_tag(it.pin.user.avatar.url(:mini), :class => "img-rounded") + " #{it.pin.user.name}", it.pin.user %>
+                        </div>
+                        <div class="pin_hover">
+                            <% if !(current_user.liked? it.pin) %>
+                                <div class="like">
+                                    <%= link_to like_pin_path(it.pin), method: :put, class: "btn btn-default" do %>
+                                        <span class="change-icon">
+                                        <i class="fa fa-heart-o"></i>
+                                        <i class="fa fa-heart"></i>
+                                        </span>
+                                    <% end %>
+                                </div>
+                            <% else %>
+                                <div class="like">
+                                    <%= link_to dislike_pin_path(it.pin), method: :put, class: "btn btn-default" do%>
+                                        <span class="change-icon">
+                                        <i class="fa fa-heart"></i>
+                                        <i class="fa fa-heart-o"></i>
+                                        </span>
+                                    <% end %>
+                                </div>
+                            <% end %>
+                        </div>
+                        <div class="pin_hover_left">
+                            <a class="btn btn-default" href="#">Pin It</a>
+                        </div>
+                   </div>
+                </div>
+            </div>
+            <% end %>
+    </div>
+    <div class="finish clearfix">
+        <div class="center">
+            <i class="fa fa-pinterest"></i>
+        </div>
+    </div>
+</div>
