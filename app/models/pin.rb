@@ -4,7 +4,7 @@ class Pin < ActiveRecord::Base
     friendly_id :title, use: :slugged
 
     belongs_to :user
-    has_and_belongs_to_many :boards
+    has_many :its
 
     acts_as_votable
 

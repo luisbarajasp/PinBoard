@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'its/new'
+
   get 'likes/index'
 
   devise_for :users
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
   get 'pages/contact'
 
   resources :pins do
+      resources :its, only: [:new,:create,:destroy]
      member do
         put "like", to: "pins#like"
         put "dislike", to: "pins#unlike"

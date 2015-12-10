@@ -90,20 +90,10 @@ $red: #ff4c4c;
                     }
                     font-size: 2em;
         		    position: absolute;
-                    .text{
-                        text-transform: uppercase;
-                        font-size: 1em;
-                        display: none;
-                        background-color: $white;
-                        color: $dark;
-                    }
                     .change-icon > .fa:nth-child(2) {
                       display: none;
                     }
                     &:hover{
-                        .text{
-                            display: block;
-                        }
                         .change-icon > .fa:nth-child(1) {
                           display: none;
                         }
@@ -134,11 +124,13 @@ $red: #ff4c4c;
             .change-icon > .fa:nth-child(2) {
               display: none;
             }
-            .change-icon:hover > .fa:nth-child(1) {
-              display: none;
-            }
-            .change-icon:hover > .fa:nth-child(2) {
-              display: inherit;
+            &:hover{
+                .change-icon > .fa:nth-child(1) {
+                  display: none;
+                }
+                .change-icon > .fa:nth-child(2) {
+                  display: inherit;
+                }
             }
         }
         .pin_it{

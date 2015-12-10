@@ -1,0 +1,80 @@
+<div class="new_it super_skinny_wrapper wrapper_padding show">
+    <div class="it_pin">
+        <div class="panel panel-default">
+            <div class="panel-heading center">
+                <div class="user_options clearfix">
+                    <div class="pin_like">
+                        <% if !(current_user.liked? @pin) %>
+                            <div class="like">
+                                <%= link_to like_pin_path(@pin), method: :put, class: "btn btn-default" do %>
+                                    <span class="change-icon">
+                                    <i class="fa fa-heart-o"></i>
+                                    <i class="fa fa-heart"></i>
+                                    </span>
+                                <% end %>
+                            </div>
+                        <% else %>
+                            <div class="like">
+                                <%= link_to dislike_pin_path(@pin), method: :put, class: "btn btn-default" do%>
+                                    <span class="change-icon">
+                                    <i class="fa fa-heart"></i>
+                                    <i class="fa fa-heart-o"></i>
+                                    </span>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+
+                <h3 class="panel-title"><%= @pin.title %></h3>
+             </div>
+              <div class="panel-body center">
+                <%= image_tag @pin.image.url, :class => "image_panel" %>
+              </div>
+              <div class="pin_display">
+                  <div class="time col-md-12">
+                      <%= time_ago_in_words(@pin.created_at)%> ago
+                  </div>
+              </div>
+              <% if @pin.user != current_user %>
+              <div class="pin_user">
+                  <%= link_to image_tag(@pin.user.avatar.url(:mini), :class => "img-circle") + " #{@pin.user.name}", @pin.user %>
+              </div>
+              <% end %>
+        </div>
+    </div>
+    <div class="it_form">
+        <%= form_for ([@pin, @it]) do |f| %>
+            <% if @it.errors.any? %>
+
+                <h2><%= pluralize(@it.errors.count, "error") %> prevented from saving the board:</h2>
+                <ul>
+                    <% @it.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                </ul>
+
+            <% end %>
+
+            <div class="form-group">
+        		<%= f.label :board, "Select the board to pin it:" %> <br>
+        		<%= f.select :board_id, current_user.boards.map {|x| [x.name, x.id]}, {:include_blank=> "Select a board..."}, class: "form-control"%>
+        	</div>
+
+        	<div class="form-group">
+           	 	<%= f.submit "Submit", class: "btn btn-success" %>
+         	</div>
+
+        <% end %>
+    </div>
+</div>
+<div class="arrow">
+    <%= image_tag ("arrow.jpg") %>
+</div>
+<div class="create_board">
+    <p>
+        If you want to create
+        a new Board. <br>
+        <span>Click the button!</span>
+    </p>
+</div>

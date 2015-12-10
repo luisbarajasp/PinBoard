@@ -1,0 +1,53 @@
+$principal: #32526E;
+$secondary: #81B9C3;
+$dark: #424652;
+$white: #fff;
+$highlight: #FF884D;
+$light-gray: #ededed;
+$gray: #939393;
+$red: #ff4c4c;
+
+.new_it{
+    position: relative;
+    .it_pin{
+        position: absolute;
+        top:2em;
+        left: 0;
+        width: 50%;
+    }
+    .it_form{
+        position: absolute;
+        top: 200%;
+        right: 0;
+        width: 40%;
+    }
+}
+.arrow{
+    position: fixed;
+    right: 35px;
+    bottom: 110px;
+    img{
+        max-height: 71px;
+        max-width: 100px;
+    }
+}
+.create_board{
+    position: fixed;
+    right: 150px;
+    bottom: 130px;
+    text-align: center;
+    background-color: $secondary;
+    -moz-border-radius: 100px / 50px;
+    -webkit-border-radius: 100px / 50px;
+    border-radius: 100px / 50px;
+    p{
+        color: $white;
+        font-size: 1em;
+        margin: .5em 2em;;
+        span{
+            font-family: 'Damion', cursive;
+            font-size: 2em;
+            font-weight: 700;
+        }
+    }
+}
