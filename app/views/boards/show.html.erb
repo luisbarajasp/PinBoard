@@ -19,7 +19,8 @@
                 </p>
             </nav>
             <nav class="col-md-4 send">
-                <a class="btn btn-default" href="#"><i class="fa fa-paper-plane"></i></a>
+                <a class="btn btn-default" href="mailto:"><i class="fa fa-paper-plane"></i></a>
+                <a class="btn btn-default" onclick="javascript:window.open('http://twitter.com/share?text=Check this awesome board: <%= @board.name %> at @PinBoard - &amp;url=<%= url_for([@user,@board, {only_path: false}]) %>', '_blank', 'width=800,height=500,top=200,left=300');void(0);"><i class="fa fa-twitter"></i></a>
             </nav>
         </div>
     </div>
