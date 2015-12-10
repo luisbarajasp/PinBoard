@@ -12,9 +12,9 @@ class BoardsController < ApplicationController
     end
 
     def new
-        user = User.friendly.find(params[:user_id])
+        @user = User.friendly.find(params[:user_id])
         @board = Board.new
-        @board.user.build
+        @user.boards.build
     end
 
     def create

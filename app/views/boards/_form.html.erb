@@ -1,4 +1,4 @@
-<%= form_for ([@board.user, @board]) do |f| %>
+<%= form_for ([@user, @board]) do |f| %>
     <% if @board.errors.any? %>
 
         <h2><%= pluralize(@board.errors.count, "error") %> prevented from saving the board:</h2>
