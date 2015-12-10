@@ -64,9 +64,11 @@
                                 </div>
                             <% end %>
                         </div>
-                        <div class="pin_hover_left">
-                            <a class="btn btn-default" href="#">Pin It</a>
-                        </div>
+                        <% if current_user != @user %>
+                            <div class="pin_hover_left">
+                                <%= link_to "Pin It", new_pin_it_path(it.pin), :class => "btn btn-default" %>
+                            </div>
+                        <% end %>
                    </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@
         <div class="panel-heading center">
             <div class="user_options clearfix">
                 <div class="pin_it">
-                    <a class="btn btn-default" href="#">Pin It</a>
+                    <%= link_to "Pin It", new_pin_it_path(@pin), :class => "btn btn-default" %>
                 </div>
                 <div class="pin_like">
                     <% if !(current_user.liked? @pin) %>
