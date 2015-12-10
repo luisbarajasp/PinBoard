@@ -59,6 +59,22 @@ class BoardsController < ApplicationController
 		redirect_to user_boards_path
     end
 
+    def follow
+        @user = User.friendly.find(params[:user_id])
+        @board = @user.boards.friendly.find(params[:id])
+        current_user.follow(@board)
+
+        redirect_to :back
+    end
+
+    def unfollow
+        @user = User.friendly.find(params[:user_id])
+        @board = @user.boards.friendly.find(params[:id])
+        current_user.stop_following(@board)
+
+        redirect_to :back
+    end
+
     private
 
     def board_params

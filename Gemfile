@@ -22,6 +22,7 @@ gem "paperclip-dropbox", ">= 1.1.7"
 gem "figaro"
 gem 'socialization', '~> 1.2'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'acts_as_follower', '~> 0.2.1'
 
 
 group :development, :test do

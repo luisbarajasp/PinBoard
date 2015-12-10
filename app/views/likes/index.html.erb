@@ -3,6 +3,14 @@
         <% if @user == current_user %>
             <%= link_to "Edit Profile", edit_user_registration_path, :class => "btn btn-primary edit" %> <br> <br>
             <%= link_to "Log out", destroy_user_session_path, :method => :delete, :class => "btn btn-danger sign_out" %>
+        <% else %>
+            <% if !(current_user.following? @user) %>
+                <%= link_to "Follow", follow_user_path(@user), method: :get, class: "btn btn-primary edit" %>
+                <br>
+            <% else %>
+                <%= link_to "Unfollow", unfollow_user_path(@user), method: :get, class: "btn btn-danger edit" %>
+                <br>
+            <% end %>
         <% end %>
         <%= image_tag @user.avatar.url(:thumb), :class => "img-circle" %>
         <h1><%= @user.name %></h1>
@@ -28,7 +36,7 @@
                         </span>
                     <% end %>
                 </li>
-                <li>
+                <li id="active">
                     <%= link_to user_likes_path(@user) do%>
                         <span class="number">
                             <%= @user.find_liked_items.count %>
@@ -39,24 +47,24 @@
                     <% end %>
                 </li>
                 <li>
-                    <a href="#">
+                    <%= link_to user_followers_path(@user) do %>
                         <span class="number">
-                            0
+                            <%= @user.followers_count %>
                         </span>
                         <span class="type">
                             Followers
                         </span>
-                    </a>
+                    <% end %>
                 </li>
                 <li>
-                    <a href="#">
+                    <%= link_to user_following_index_path(@user) do %>
                         <span class="number">
-                            0
+                            <%= @user.following_users_count %>
                         </span>
                         <span class="type">
                             Following
                         </span>
-                    </a>
+                    <% end %>
                 </li>
             </ul>
         </div>

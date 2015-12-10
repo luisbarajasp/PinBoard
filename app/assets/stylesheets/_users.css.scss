@@ -4,7 +4,7 @@ $dark: #424652;
 $white: #fff;
 $highlight: #FF884D;
 $light-gray: #ededed;
-$gray: #939393;
+$gray: #bdbdbd;
 $red: #ff4c4c;
 
 .user_show{
@@ -41,6 +41,11 @@ $red: #ff4c4c;
             a{
                 color: $gray;
                 &:hover{
+                    color: $principal;
+                }
+            }
+            #active{
+                a{
                     color: $principal;
                 }
             }

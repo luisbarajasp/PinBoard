@@ -7,8 +7,19 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, :only => [:show,:index,:likes] do
-      resources :boards
+      resources :boards do
+          member do
+             put "follow", to: "boards#follow"
+             put "unfollow", to: "boards#unfollow"
+         end
+      end
       resources :likes , only: [:index]
+      resources :followers , only: [:index]
+      resources :following , only: [:index]
+      member do
+         get "follow", to: "users#follow"
+         get "unfollow", to: "users#unfollow"
+     end
   end
 
     devise_scope :user do

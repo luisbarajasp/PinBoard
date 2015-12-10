@@ -1,4 +1,4 @@
-<div class="user_show">
+<div class="following">
     <div class="header">
         <% if @user == current_user %>
             <%= link_to "Edit Profile", edit_user_registration_path, :class => "btn btn-primary edit" %> <br> <br>
@@ -26,8 +26,8 @@
                         </span>
                     <% end %>
                 </li>
-                <li id="active">
-                    <%= link_to user_path do%>
+                <li>
+                    <%= link_to user_path(@user) do%>
                         <span class="number">
                             <%= @user.pins.count %>
                         </span>
@@ -56,7 +56,7 @@
                         </span>
                     <% end %>
                 </li>
-                <li>
+                <li id="active">
                     <%= link_to user_following_index_path(@user) do %>
                         <span class="number">
                             <%= @user.following_users_count %>
@@ -69,67 +69,44 @@
             </ul>
         </div>
     </div>
-    <% if @user.pins.count > 0 %>
-    <div id="pins" class="transitions-enabled wrapper2 wrapper_padding index">
-            <% @pins.each do |pin| %>
+    <% if @user.following_users_count > 0 %>
+        <div id="following" class="transitions-enabled wrapper2 wrapper_padding index">
+            <% @followings.each do |following| %>
             <div class="box col3">
-              <div class="thumbnail">
-                   <%= link_to image_tag(pin.image.url(:medium)), pin %>
-                   <div class="caption">
-                        <div class="pin_title">
-                            <h4><%= pin.title %></h4>
-                        </div>
-                        <% if pin.description? %>
-                            <div class="pin_desc">
-                                <p><%= pin.description %></p>
-                            </div>
-                        <% end %>
-                        <div class="pin_user">
-                            <%= link_to image_tag(pin.user.avatar.url(:mini), :class => "img-rounded") + " #{pin.user.name}", pin.user %>
-                        </div>
-                        <div class="pin_hover">
-                            <% if !(current_user.liked? pin) %>
-                                <div class="like">
-                                    <%= link_to like_pin_path(pin), method: :put, class: "btn btn-default" do %>
-                                        <span class="change-icon">
-                                        <i class="fa fa-heart-o"></i>
-                                        <i class="fa fa-heart"></i>
-                                        </span>
-                                    <% end %>
-                                </div>
-                            <% else %>
-                                <div class="like">
-                                    <%= link_to dislike_pin_path(pin), method: :put, class: "btn btn-default" do%>
-                                        <span class="change-icon">
-                                        <i class="fa fa-heart"></i>
-                                        <i class="fa fa-heart-o"></i>
-                                        </span>
-                                    <% end %>
-                                </div>
-                            <% end %>
-                        </div>
-                        <div class="pin_hover_left">
-                            <%= link_to "Pin It", new_pin_it_path(pin), :class => "btn btn-default" %>
-                        </div>
-                   </div>
-                </div>
+              <div class="thumbnail caption-top">
+                  <% if following.avatar? %>
+                      <%= image_tag following.avatar.url(:medium) %>
+                  <% else %>
+                      <%= image_tag ("pinterest-pin.png") %>
+                  <% end %>
+                  <%= link_to user_path(following) do %>
+                      <div id="grad" class="caption board-title">
+                          <h4><%= following.name %></h4>
+                          <h4>Pins: <%= following.pins.count %></h4>
+                      </div>
+                      <div class="fol_btn">
+                          <% if !(current_user.following? following) %>
+                              <%= link_to "Follow", follow_user_path(following), method: :get, class: "follow" %>
+                          <% else %>
+                              <%= link_to "Unfollow", unfollow_user_path(following), method: :get, class: "unfollow" %>
+                          <% end %>
+                      </div>
+                  <% end %>
+               </div>
             </div>
             <% end %>
-    </div>
-
-    <div class="finish clearfix">
-        <div class="center">
-            <i class="fa fa-pinterest"></i>
         </div>
-    </div>
+
+        <div class="finish clearfix">
+            <div class="center">
+                <i class="fa fa-pinterest"></i>
+            </div>
+        </div>
     <% else %>
-
-    <div class="finish-wo clearfix">
-        <div class="center">
-            <i class="fa fa-pinterest"></i>
+        <div class="finish-wo clearfix">
+            <div class="center">
+                <i class="fa fa-pinterest"></i>
+            </div>
         </div>
-    </div>
-
     <% end %>
-
 </div>
