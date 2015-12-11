@@ -151,7 +151,13 @@ $red: #ff4c4c;
             }
             .pins{
                 text-align: center;
-                p{
+                .disabled{
+                    pointer-events: none;
+                    cursor: default;
+                }
+                a{
+                    text-decoration: none;
+                    display: inline;
                     color: $gray;
                     font-size: 1em;
                     font-weight: 700;
@@ -159,10 +165,17 @@ $red: #ff4c4c;
                         font-size: .8em;
                         font-weight: 400;
                     }
+                    &:hover{
+                        color: $principal;
+                    }
                 }
             }
             .send{
                 text-align: right;
+                ul > li{
+                    display: inline;
+                    list-style-type: none;
+                }
             }
         }
     }

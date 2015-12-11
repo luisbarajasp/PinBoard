@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   resources :users, :only => [:show,:index,:likes] do
       resources :boards do
           member do
-             put "follow", to: "boards#follow"
-             put "unfollow", to: "boards#unfollow"
+             get "follow", to: "boards#follow"
+             get "unfollow", to: "boards#unfollow"
          end
+         resources :followers , only: [:board]
       end
       resources :likes , only: [:index]
       resources :followers , only: [:index]

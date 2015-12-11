@@ -18,6 +18,7 @@
                     <div class="pin_user">
                         <%= link_to image_tag(pin.user.avatar.url(:mini), :class => "img-rounded") + " #{pin.user.name}", pin.user %>
                     </div>
+
                     <div class="pin_hover">
                         <% if !(current_user.liked? pin) %>
                             <div class="like">

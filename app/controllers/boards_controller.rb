@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
 
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:show]
 
 	before_filter :check_user, only: [:edit, :update, :destroy]
 

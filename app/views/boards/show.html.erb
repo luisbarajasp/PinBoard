@@ -11,16 +11,41 @@
                 <%= link_to image_tag(@user.avatar.url(:mini), :class => "img-circle") + " #{@user.name.split[0]}", @user %>
             </nav>
             <nav class="col-md-4 pins">
-                <p>
-                    <%= @board.its.count %> <br>
-                    <span>
-                        Pins
-                    </span>
-                </p>
+                <div class="col-md-4 col-md-offset-2">
+                    <a class="disabled" href="">
+                        <%= @board.its.count %> <br>
+                        <span>
+                            Pins
+                        </span>
+                    </p>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="#">
+                        <%= @board.followers_count %> <br>
+                        <span>
+                            Followers
+                        </span>
+                    </a>
+                </div>
+
             </nav>
             <nav class="col-md-4 send">
-                <a class="btn btn-default" href="mailto:"><i class="fa fa-paper-plane"></i></a>
+
+                <% if user_signed_in? && current_user != @user %>
+                    <% if !(current_user.following? @user) %>
+                        <%= link_to "Follow", follow_user_board_path(@user,@board), method: :get, class: "btn btn-primary" %>
+                        <br>
+                    <% else %>
+                        <%= link_to "Unfollow", unfollow_user_board_path(@user,@board), method: :get, class: "btn btn-danger" %>
+                        <br>
+                    <% end %>
+                <% end %>
+
+                <a class="btn btn-default" href="mailto:?subject=Awesome board: <%= @board.name %>&body=Hey I think you might find interesting the board I found in Pinboard.%0D%0ACheck it out at: <%= url_for([@user,@board, {only_path: false}]) %>"><i class="fa fa-paper-plane"></i></a>
+
                 <a class="btn btn-default" onclick="javascript:window.open('http://twitter.com/share?text=Check this awesome board: <%= @board.name %> at @PinBoard - &amp;url=<%= url_for([@user,@board, {only_path: false}]) %>', '_blank', 'width=800,height=500,top=200,left=300');void(0);"><i class="fa fa-twitter"></i></a>
+
             </nav>
         </div>
     </div>
@@ -44,31 +69,33 @@
                         <div class="pin_user">
                             <%= link_to image_tag(it.pin.user.avatar.url(:mini), :class => "img-rounded") + " #{it.pin.user.name}", it.pin.user %>
                         </div>
-                        <div class="pin_hover">
-                            <% if !(current_user.liked? it.pin) %>
-                                <div class="like">
-                                    <%= link_to like_pin_path(it.pin), method: :put, class: "btn btn-default" do %>
-                                        <span class="change-icon">
-                                        <i class="fa fa-heart-o"></i>
-                                        <i class="fa fa-heart"></i>
-                                        </span>
-                                    <% end %>
-                                </div>
-                            <% else %>
-                                <div class="like">
-                                    <%= link_to dislike_pin_path(it.pin), method: :put, class: "btn btn-default" do%>
-                                        <span class="change-icon">
-                                        <i class="fa fa-heart"></i>
-                                        <i class="fa fa-heart-o"></i>
-                                        </span>
-                                    <% end %>
+                        <% if user_signed_in? %>
+                            <div class="pin_hover">
+                                <% if !(current_user.liked? it.pin) %>
+                                    <div class="like">
+                                        <%= link_to like_pin_path(it.pin), method: :put, class: "btn btn-default" do %>
+                                            <span class="change-icon">
+                                            <i class="fa fa-heart-o"></i>
+                                            <i class="fa fa-heart"></i>
+                                            </span>
+                                        <% end %>
+                                    </div>
+                                <% else %>
+                                    <div class="like">
+                                        <%= link_to dislike_pin_path(it.pin), method: :put, class: "btn btn-default" do%>
+                                            <span class="change-icon">
+                                            <i class="fa fa-heart"></i>
+                                            <i class="fa fa-heart-o"></i>
+                                            </span>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+                            </div>
+                            <% if current_user != @user %>
+                                <div class="pin_hover_left">
+                                    <%= link_to "Pin It", new_pin_it_path(it.pin), :class => "btn btn-default" %>
                                 </div>
                             <% end %>
-                        </div>
-                        <% if current_user != @user %>
-                            <div class="pin_hover_left">
-                                <%= link_to "Pin It", new_pin_it_path(it.pin), :class => "btn btn-default" %>
-                            </div>
                         <% end %>
                    </div>
                 </div>

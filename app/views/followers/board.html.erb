@@ -1,0 +1,92 @@
+<div class="followers_board">
+    <div class="header">
+        <div class="board_params center wrapper ">
+            <h1><%= @board.name %></h1>
+            <% if @board.description? %>
+                <h4><%= @board.description %></h4>
+            <% end %>
+        </div>
+        <div class="board_attr wrapper">
+            <nav class="col-md-4 user">
+                <%= link_to image_tag(@user.avatar.url(:mini), :class => "img-circle") + " #{@user.name.split[0]}", @user %>
+            </nav>
+            <nav class="col-md-4 pins">
+                <div class="col-md-4 col-md-offset-2">
+                    <a class="disabled" href="">
+                        <%= @board.its.count %> <br>
+                        <span>
+                            Pins
+                        </span>
+                    </p>
+                </div>
+
+                <div class="col-md-4">
+                    <a href="#">
+                        <%= @board.followers_count %> <br>
+                        <span>
+                            Followers
+                        </span>
+                    </a>
+                </div>
+
+            </nav>
+            <nav class="col-md-4 send">
+
+                <% if user_signed_in? && current_user != @user %>
+                    <% if !(current_user.following? @user) %>
+                        <%= link_to "Follow", follow_user_board_path(@user,@board), method: :get, class: "btn btn-primary" %>
+                        <br>
+                    <% else %>
+                        <%= link_to "Unfollow", unfollow_user_board_path(@user,@board), method: :get, class: "btn btn-danger" %>
+                        <br>
+                    <% end %>
+                <% end %>
+
+                <a class="btn btn-default" href="mailto:?subject=Awesome board: <%= @board.name %>&body=Hey I think you might find interesting the board I found in Pinboard.%0D%0ACheck it out at: <%= url_for([@user,@board, {only_path: false}]) %>"><i class="fa fa-paper-plane"></i></a>
+
+                <a class="btn btn-default" onclick="javascript:window.open('http://twitter.com/share?text=Check this awesome board: <%= @board.name %> at @PinBoard - &amp;url=<%= url_for([@user,@board, {only_path: false}]) %>', '_blank', 'width=800,height=500,top=200,left=300');void(0);"><i class="fa fa-twitter"></i></a>
+
+            </nav>
+        </div>
+    </div>
+    <% if @board.followers_count > 0 %>
+        <div id="followers" class="transitions-enabled wrapper2 wrapper_padding index">
+            <% @followers.each do |follower| %>
+            <div class="box col3">
+              <div class="thumbnail caption-top">
+                  <% if follower.avatar? %>
+                      <%= image_tag follower.avatar.url(:medium) %>
+                  <% else %>
+                      <%= image_tag ("pinterest-pin.png") %>
+                  <% end %>
+                  <%= link_to user_path(follower) do %>
+                      <div id="grad" class="caption board-title">
+                          <h4><%= follower.name %></h4>
+                          <h4>Pins: <%= follower.pins.count %></h4>
+                      </div>
+                      <div class="fol_btn">
+                          <% if !(current_user.following? follower) %>
+                              <%= link_to "Follow", follow_user_path(follower), method: :get, class: "follow" %>
+                          <% else %>
+                              <%= link_to "Unfollow", unfollow_user_path(follower), method: :get, class: "unfollow" %>
+                          <% end %>
+                      </div>
+                  <% end %>
+               </div>
+            </div>
+            <% end %>
+        </div>
+
+        <div class="finish clearfix">
+            <div class="center">
+                <i class="fa fa-pinterest"></i>
+            </div>
+        </div>
+    <% else %>
+        <div class="finish-wo clearfix">
+            <div class="center">
+                <i class="fa fa-pinterest"></i>
+            </div>
+        </div>
+    <% end %>
+</div>

@@ -1,36 +1,38 @@
 <div class="super_skinny_wrapper show">
     <div class="panel panel-default">
         <div class="panel-heading center">
-            <div class="user_options clearfix">
-                <div class="pin_it">
-                    <%= link_to "Pin It", new_pin_it_path(@pin), :class => "btn btn-default" %>
+            <% if user_signed_in? %>
+                <div class="user_options clearfix">
+                    <div class="pin_it">
+                        <%= link_to "Pin It", new_pin_it_path(@pin), :class => "btn btn-default" %>
+                    </div>
+                    <div class="pin_like">
+                        <% if !(current_user.liked? @pin) %>
+                            <div class="like">
+                                <%= link_to like_pin_path(@pin), method: :put, class: "btn btn-default" do %>
+                                    <span class="change-icon">
+                                    <i class="fa fa-heart-o"></i>
+                                    <i class="fa fa-heart"></i>
+                                    </span>
+                                <% end %>
+                            </div>
+                        <% else %>
+                            <div class="like">
+                                <%= link_to dislike_pin_path(@pin), method: :put, class: "btn btn-default" do%>
+                                    <span class="change-icon">
+                                    <i class="fa fa-heart"></i>
+                                    <i class="fa fa-heart-o"></i>
+                                    </span>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
                 </div>
-                <div class="pin_like">
-                    <% if !(current_user.liked? @pin) %>
-                        <div class="like">
-                            <%= link_to like_pin_path(@pin), method: :put, class: "btn btn-default" do %>
-                                <span class="change-icon">
-                                <i class="fa fa-heart-o"></i>
-                                <i class="fa fa-heart"></i>
-                                </span>
-                            <% end %>
-                        </div>
-                    <% else %>
-                        <div class="like">
-                            <%= link_to dislike_pin_path(@pin), method: :put, class: "btn btn-default" do%>
-                                <span class="change-icon">
-                                <i class="fa fa-heart"></i>
-                                <i class="fa fa-heart-o"></i>
-                                </span>
-                            <% end %>
-                        </div>
-                    <% end %>
-                </div>
-            </div>
+            <% end %>
 
             <h3 class="panel-title"><%= @pin.title %></h3>
 
-            <% if @pin.user == current_user %>
+            <% if user_signed_in? && @pin.user == current_user %>
                 <div class="center admin_options">
                     <%= link_to '<i class="fa fa-pencil"></i>'.html_safe, edit_pin_path(@pin) %>
                     <%= link_to '<i class="fa fa-trash"></i>'.html_safe, pin_path(@pin), method: :delete, data: {confirm: "Are you sure?"} %>
@@ -48,7 +50,7 @@
                   <%= time_ago_in_words(@pin.created_at)%> ago
               </div>
           </div>
-          <% if @pin.user != current_user %>
+          <% if @pin.user != current_user || !user_signed_in? %>
           <div class="pin_user">
               <%= link_to image_tag(@pin.user.avatar.url(:mini), :class => "img-circle") + " #{@pin.user.name}", @pin.user %>
           </div>
