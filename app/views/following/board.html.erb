@@ -87,7 +87,7 @@
                   <% else %>
                       <%= image_tag ("pinterest-pin.png") %>
                   <% end %>
-                  <%= link_to user_board_path(@user,board) do %>
+                  <%= link_to user_board_path(board.user,board) do %>
                       <div id="grad" class="caption board-title">
                           <h4><%= board.name %></h4>
                       </div>
