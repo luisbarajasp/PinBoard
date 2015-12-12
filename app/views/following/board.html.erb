@@ -1,4 +1,4 @@
-<div class="following">
+<div class="following_boards">
     <div class="header">
         <% if @user == current_user %>
             <%= link_to "Edit Profile", edit_user_registration_path, :class => "btn btn-primary edit" %> <br> <br>
@@ -70,36 +70,37 @@
         </div>
     </div>
     <nav>
-        <%= link_to user_following_index_path(@user), :class => "btn btn-default first active" do %>
+        <%= link_to user_following_index_path(@user), :class => "btn btn-default first" do %>
             Users
         <% end %>
-        <%= link_to user_following_boards_path(@user), :class => "btn btn-default second" do %>
+        <%= link_to user_following_boards_path(@user), :class => "btn btn-default second active" do %>
             Boards
         <% end %>
     </nav>
-    <% if @user.following_users_count > 0 %>
+    <% if @user.following_boards_count > 0 %>
         <div id="following" class="transitions-enabled wrapper2 wrapper_padding index">
-            <% @followings.each do |following| %>
+            <% @followings.each do |board| %>
             <div class="box col3">
               <div class="thumbnail caption-top">
-                  <% if following.avatar? %>
-                      <%= image_tag following.avatar.url(:medium) %>
+                  <% if board.its.count > 0 %>
+                      <%= image_tag board.its.first.pin.image.url %>
                   <% else %>
                       <%= image_tag ("pinterest-pin.png") %>
                   <% end %>
-                  <%= link_to user_path(following) do %>
+                  <%= link_to user_board_path(@user,board) do %>
                       <div id="grad" class="caption board-title">
-                          <h4><%= following.name %></h4>
-                          <h4>Pins: <%= following.pins.count %></h4>
-                      </div>
-                      <div class="fol_btn">
-                          <% if !(current_user.following? following) %>
-                              <%= link_to "Follow", follow_user_path(following), method: :get, class: "follow" %>
-                          <% else %>
-                              <%= link_to "Unfollow", unfollow_user_path(following), method: :get, class: "unfollow" %>
-                          <% end %>
+                          <h4><%= board.name %></h4>
                       </div>
                   <% end %>
+                  <div class="fol_btn">
+                      <% if current_user != board.user %>
+                          <% if !(current_user.following? board) %>
+                              <%= link_to "Follow", follow_user_path(board), method: :get, class: "follow" %>
+                          <% else %>
+                              <%= link_to "Unfollow", unfollow_user_path(board), method: :get, class: "unfollow" %>
+                          <% end %>
+                      <% end %>
+                  </div>
                </div>
             </div>
             <% end %>

@@ -59,7 +59,7 @@
                 <li>
                     <%= link_to user_following_index_path(@user) do %>
                         <span class="number">
-                            <%= @user.following_users_count %>
+                            <%= @user.follow_count %>
                         </span>
                         <span class="type">
                             Following
@@ -84,6 +84,15 @@
                           <h4><%= board.name %></h4>
                       </div>
                   <% end %>
+                  <div class="fol_btn">
+                      <% if current_user != board.user %>
+                          <% if !(current_user.following? board) %>
+                              <%= link_to "Follow", follow_user_path(board), method: :get, class: "follow" %>
+                          <% else %>
+                              <%= link_to "Unfollow", unfollow_user_path(board), method: :get, class: "unfollow" %>
+                          <% end %>
+                      <% end %>
+                  </div>
                </div>
             </div>
             <% end %>

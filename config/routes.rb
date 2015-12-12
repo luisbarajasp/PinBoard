@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :likes , only: [:index]
       resources :followers , only: [:index]
       resources :following , only: [:index]
+      get "following/boards", to: "following#board", as: 'following/boards'
       member do
          get "follow", to: "users#follow"
          get "unfollow", to: "users#unfollow"
