@@ -87,9 +87,9 @@
                   <div class="fol_btn">
                       <% if current_user != board.user %>
                           <% if !(current_user.following? board) %>
-                              <%= link_to "Follow", follow_user_path(board), method: :get, class: "follow" %>
+                              <%= link_to "Follow", follow_user_board_path(board.user,board), method: :get, class: "follow" %>
                           <% else %>
-                              <%= link_to "Unfollow", unfollow_user_path(board), method: :get, class: "unfollow" %>
+                              <%= link_to "Unfollow", unfollow_user_board_path(board.user,board), method: :get, class: "unfollow" %>
                           <% end %>
                       <% end %>
                   </div>
