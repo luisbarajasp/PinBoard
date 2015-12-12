@@ -12,7 +12,7 @@ Rails.application.routes.draw do
              get "follow", to: "boards#follow"
              get "unfollow", to: "boards#unfollow"
          end
-         resources :followers , only: [:board]
+         get "followers", to: "followers#board"
       end
       resources :likes , only: [:index]
       resources :followers , only: [:index]

@@ -1,6 +1,17 @@
 <div class="board_show">
     <div class="header">
         <div class="board_params center wrapper ">
+            <div class="foll_btn">
+                <% if user_signed_in? && current_user != @user %>
+                    <% if !(current_user.following? @board) %>
+                        <%= link_to "Follow", follow_user_board_path(@user,@board), method: :get, class: "btn btn-primary" %>
+                        <br>
+                    <% else %>
+                        <%= link_to "Unfollow", unfollow_user_board_path(@user,@board), method: :get, class: "btn btn-danger" %>
+                        <br>
+                    <% end %>
+                <% end %>
+            </div>
             <h1><%= @board.name %></h1>
             <% if @board.description? %>
                 <h4><%= @board.description %></h4>
@@ -12,35 +23,23 @@
             </nav>
             <nav class="col-md-4 pins">
                 <div class="col-md-4 col-md-offset-2">
-                    <a class="disabled" href="">
+                    <a class="active disabled" href="">
                         <%= @board.its.count %> <br>
                         <span>
                             Pins
                         </span>
                     </p>
                 </div>
-
                 <div class="col-md-4">
-                    <a href="#">
+                    <%= link_to user_board_followers_path(@user,@board) do %>
                         <%= @board.followers_count %> <br>
                         <span>
                             Followers
                         </span>
-                    </a>
+                    <% end %>
                 </div>
-
             </nav>
             <nav class="col-md-4 send">
-
-                <% if user_signed_in? && current_user != @user %>
-                    <% if !(current_user.following? @user) %>
-                        <%= link_to "Follow", follow_user_board_path(@user,@board), method: :get, class: "btn btn-primary" %>
-                        <br>
-                    <% else %>
-                        <%= link_to "Unfollow", unfollow_user_board_path(@user,@board), method: :get, class: "btn btn-danger" %>
-                        <br>
-                    <% end %>
-                <% end %>
 
                 <a class="btn btn-default" href="mailto:?subject=Awesome board: <%= @board.name %>&body=Hey I think you might find interesting the board I found in Pinboard.%0D%0ACheck it out at: <%= url_for([@user,@board, {only_path: false}]) %>"><i class="fa fa-paper-plane"></i></a>
 

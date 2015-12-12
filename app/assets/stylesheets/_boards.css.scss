@@ -134,6 +134,9 @@ $red: #ff4c4c;
             h4{
                 font-size: 1.5rem;
             }
+            .foll_btn{
+                text-align: right;
+            }
             border-bottom: 1px solid $light-gray;
         }
         .board_attr{
@@ -154,6 +157,7 @@ $red: #ff4c4c;
                 .disabled{
                     pointer-events: none;
                     cursor: default;
+                    color: $principal;
                 }
                 a{
                     text-decoration: none;
